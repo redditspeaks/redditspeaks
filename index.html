@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RedditSpeaks — Automated Reddit Story Videos</title>
+  <link rel="icon" type="image/png" href="RedditSpeaks.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -46,6 +47,9 @@
     }
 
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Syne', sans-serif;
       font-size: 1.3rem;
       font-weight: 800;
@@ -53,6 +57,8 @@
       text-decoration: none;
       letter-spacing: -0.5px;
     }
+
+    .nav-logo-icon { width: 28px; height: 28px; border-radius: 6px; display: block; }
 
     .nav-logo span { color: var(--accent); }
 
@@ -417,7 +423,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#">Reddit<span>Speaks</span></a>
+    <a class="nav-logo" href="#"><img src="RedditSpeaks.png" alt="RedditSpeaks" class="nav-logo-icon" />Reddit<span>Speaks</span></a>
     <ul class="nav-links">
       <li><a href="#how-it-works">How it works</a></li>
       <li><a href="#features">Features</a></li>
@@ -485,8 +491,8 @@
       <div class="step">
         <div class="step-number">STEP 04</div>
         <span class="step-icon">📱</span>
-        <h3>Published to TikTok</h3>
-        <p>The finished video is uploaded directly to TikTok using the official Content Posting API with auto-generated captions and hashtags.</p>
+        <h3>Sent to TikTok</h3>
+        <p>The finished video is uploaded via TikTok's official Content Posting API as a private draft in the creator's TikTok inbox, ready for them to review and post.</p>
       </div>
     </div>
   </section>
@@ -535,17 +541,17 @@
   <section class="section" id="integration" style="padding-top: 0;">
     <div class="section-label">TikTok API</div>
     <h2 class="section-title">Official API integration</h2>
-    <p class="section-sub">RedditSpeaks uses TikTok's Content Posting API to publish videos directly and securely.</p>
+    <p class="section-sub">RedditSpeaks uses TikTok's Content Posting API to deliver videos securely as private drafts.</p>
 
     <div class="integration">
       <div class="integration-text">
-        <h2>Direct post via<br />Content Posting API</h2>
-        <p>Videos are uploaded programmatically to the authorized TikTok account using OAuth 2.0 with PKCE and the <code>video.publish</code> scope — no browser automation, no third-party tools.</p>
+        <h2>Draft upload via<br />Content Posting API</h2>
+        <p>Videos are uploaded programmatically to the authorized TikTok account's private inbox using OAuth 2.0 with PKCE and the <code>video.upload</code> scope — no browser automation, no third-party tools. The account owner reviews and posts each draft themselves from the TikTok app.</p>
         <ul class="integration-list">
           <li>OAuth 2.0 authorization with PKCE</li>
-          <li>video.publish scope for direct posting</li>
-          <li>Captions and hashtags auto-generated per video</li>
-          <li>Only uploads to the account owner's profile</li>
+          <li>video.upload scope for inbox/draft delivery</li>
+          <li>Creator adds the caption and posts from the TikTok app</li>
+          <li>Only uploads to the account owner's own inbox</li>
           <li>No user data stored or shared</li>
           <li>Access tokens refreshed automatically</li>
         </ul>
@@ -574,7 +580,7 @@
           <div class="api-dot"></div>
           <div>
             <div class="api-step-label">3. Initialize Upload</div>
-            <div class="api-step-value">v2/post/publish/video/init</div>
+            <div class="api-step-value">v2/post/publish/inbox/video/init</div>
           </div>
         </div>
 
@@ -589,8 +595,8 @@
         <div class="api-step">
           <div class="api-dot"></div>
           <div>
-            <div class="api-step-label">5. Published</div>
-            <div class="api-step-value">Video live on @RedditSpeaks</div>
+            <div class="api-step-label">5. Sent to inbox</div>
+            <div class="api-step-value">Draft awaiting review in TikTok app</div>
           </div>
         </div>
       </div>
